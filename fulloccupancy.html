@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Occupancy Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(180deg, #143044 0%, #101012 100%);
+            font-family: Arial, sans-serif; 
+        }
+
+        .header {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            width: 100%; 
+            padding: 10px 20px; 
+            position: absolute; 
+            top: 0; 
+        }
+
+        .logo img {
+            width: 100px; 
+        }
+
+        .nav-bar {
+          position:absolute; 
+          top :20px;
+          right :70px; 
+          display:flex; 
+          gap :15px; 
+          color:white;
+        }
+
+        .nav-bar a {
+          text-decoration:none; 
+          color:white; 
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            height: 80%;
+            max-width: 90%;
+            max-height: 80%;
+            background-color: white;
+            border-radius: 20px;
+            padding: 20px;
+            position: relative;
+            margin-top: 100px; 
+        }
+
+        h2 {
+            text-align: left;
+            width: 100%;
+        }
+
+        .stall-container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+        }
+
+        .stall {
+            border-radius: 10px;
+            width: calc(40% - 10px);
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .stall.available,
+        .stall.occupied,
+        .stall.selected {
+            background-color: grey; 
+            border: 2px solid rgb(0, 0, 0);
+        }
+
+        button.next-button {
+          background-color: #143044; 
+          color: white; 
+          border-radius: 10px; 
+          padding: 10px 20px; 
+          cursor:pointer; 
+          margin-top: 20px; 
+          border:none;
+          font-size :16px;
+        }
+
+        button.next-button:hover {
+          background-color :#143044; 
+        }
+
+        .timer-container {
+          position: relative;
+          width: 400px; 
+          height: 400px; 
+          margin-bottom: 20px; }
+
+        .timer-circle {
+          position:absolute ;
+          width :100% ;
+          height :100% ;
+          border-radius :50% ;
+          background-color: transparent ; 
+        }
+
+        .timer-stroke {
+          position:absolute ;
+          width :100% ;
+          height :100% ;
+          border-radius :100% ;
+          border :100px solid ;
+          border-image-source :linear-gradient(to right, #1E2A38); 
+          border-image-slice :1; 
+          animation :strokeAnimation linear forwards ; 
+          transform :rotate(-90deg); 
+        }
+
+        @keyframes strokeAnimation {
+          from {
+              transform :rotate(0deg); 
+              opacity :100%; 
+          }
+          to {
+              transform :rotate(360deg); 
+              opacity :0%; 
+          }
+        }
+
+        .timer-content {
+          position:absolute ;
+          width :85% ;
+          height :85% ;
+          top :7.5% ;
+          left :7.5% ;
+          background-color:#1E2A38 ; 
+          border-radius :50% ;
+          display:flex ;
+          flex-direction :column ;
+          align-items :center ;
+          justify-content :center ;
+          color:white ;
+        }
+
+        .timer-display {
+          font-size :42px ;
+          font-weight :500 ;
+          margin-bottom :5px ;
+        }
+
+        .people-count {
+           display:flex;
+           align-items:center;
+           justify-content:center;
+           gap :8px;
+           margin-top :20px ;
+         }
+        
+         .people-icon {
+           width :20px ;
+           height :20px ;}
+
+           .bottom-image {
+          position:absolute;
+          bottom :20px;
+          left :20px;
+          width :250px; 
+          height:auto; 
+        }
+         
+        
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="logo">
+        <img src="images/PRIMARY LOGO.png" alt="Logo" onclick="window.location.href='home.html'"> 
+    </div>
+    <div class="nav-bar" id="navBar">
+        <a href="register.html">Register</a>
+        <a href="timer.html">Timer</a>
+        <a href="map.html">Map</a>
+        <a href="review.html">Review</a>
+      </div>
+</div>
+
+<!-- Occupancy Container -->
+<div class="container" id="occupancyContainer">
+    
+    <br>
+    <h2>Select Your Stall</h2>
+    <br><br>
+    
+    <div class="stall-container">
+      <div class="stall occupied" onclick="alertOccupied()">1</div>
+      <br>
+      <div class="stall occupied" onclick="alertOccupied()">2</div>
+      <br>
+      <div class="stall occupied" onclick="alertOccupied()">3</div>
+      <br>
+      <div class="stall occupied" onclick="alertOccupied()">4</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="stall-container">
+      <div class="stall occupied" onclick="alertOccupied()">5</div>
+      <br>
+      <div class="stall occupied" onclick="alertOccupied()">6</div>
+      <br>
+      <div class="stall occupied" onclick="alertOccupied()">7</div>
+      <br>
+      <div class="stall occupied" onclick="alertOccupied()">8</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- Next button -->
+    <button class="next-button" onclick="proceedToTimerPage()">Next</button>
+
+    <!-- Bottom image -->
+    <img src="images/key.png" alt="Bottom Image" class="bottom-image"> 
+</div>
+
+<!-- Timer Container -->
+<div class="container" id="timerContainer" style="display:none;">
+    <h2>Timer</h2>
+
+    <div class="timer-container">
+        <div class="timer-circle"></div>
+        <div class="timer-stroke"></div> 
+        <div class="timer-content">
+           <div class="timer-display" id="timerDisplay">05:00</div>
+           <div class="timer-text">minutes remaining</div>
+        </div>
+    </div>
+
+    <div class="people-count">
+       <span class="people-icon">👥</span>
+       <span>12 people in line</span>
+    </div>
+
+    <button class='next-button' onclick='proceedToPayment()'>Next</button>
+
+</div>
+
+<!-- Payment Container -->
+<div class="container" id="paymentContainer" style="display:none;">
+   <h2>Payment</h2><br>
+   <img src="images/payment.png" style="width:400px;height:400px;"> 
+   <br><br>
+   <p>Please enter a coin in the slot below to proceed further.</p><br>
+   <button class='next-button' onclick='proceedToTokenReceipt()'>Next</button>
+</div>
+
+<!-- Token Receipt Container -->
+<div class="container" id="tokenReceiptContainer" style="display:none;">
+   <h2>Token Receipt</h2><br>
+   <img src="images/token.png" style="width:400px;height:400px;"> 
+   <br><br>
+   <p>Your token number is #05.</p><br>
+   <button class='next-button' onclick='proceedToThankYou()'>Next</button>
+</div>
+
+<!-- Thank You Container -->
+<div class="container" id="thankYouContainer" style="display:none;">
+   <h2>Thank you for your co-operation!</h2><br>
+   <img src="images/QR.png" alt="QR Code" style="width:400px;height:400px;"> 
+   <br><br>
+   <p>Please scan this QR to provide valuable feedback.</p>
+</div>
+
+<script>
+// Function to alert when all stalls are occupied
+function alertOccupied() {
+    alert("All stalls are currently occupied.");
+}
+
+// Function to proceed to the timer page
+function proceedToTimerPage() {
+    document.getElementById('occupancyContainer').style.display = 'none';
+    document.getElementById('timerContainer').style.display = 'flex';
+
+    startTimer(300); // Start timer for 5 minutes
+}
+
+// Timer functionality
+let timeLeft = 300;
+
+function updateTimer() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+
+    
+    document.getElementById('timerDisplay').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+    if (timeLeft > 0) {
+        timeLeft--;
+    } else {
+        clearInterval(timerInterval);
+        alert("Time's up!");
+        
+        // Optionally disable the next button here
+        document.querySelector('.next-button').disabled = true; // Disable next button when time is up
+        document.querySelector('.next-button').textContent = "Time Up!";
+        document.querySelector('.next-button').style.backgroundColor = "grey"; // Change color to indicate disabled
+        document.querySelector('.next-button').style.cursor = "not-allowed"; // Change cursor to not-allowed
+    }
+}
+
+// Start the timer interval
+const timerInterval = setInterval(updateTimer, 1000);
+
+// Function to proceed to payment page
+function proceedToPayment() {
+   document.getElementById('timerContainer').style.display = 'none';
+   document.getElementById('paymentContainer').style.display = 'flex';
+}
+
+// Function to proceed to token receipt page
+function proceedToTokenReceipt() {
+   document.getElementById('paymentContainer').style.display = 'none';
+   document.getElementById('tokenReceiptContainer').style.display = 'flex';
+}
+
+// Function to proceed to thank you page
+function proceedToThankYou() {
+   document.getElementById('tokenReceiptContainer').style.display = 'none';
+   document.getElementById('thankYouContainer').style.display = 'flex';
+}
+</script>
+
+</body>
+</html>

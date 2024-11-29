@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review & Rate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #1B2430;
+        }
+
+       
+
+        .logo {
+            height: 67px;
+        }
+
+        
+        .nav-bar {
+          position:absolute; 
+          top :20px;
+          right :70px; 
+          display:flex; 
+          gap :15px; 
+          color:white;
+        }
+
+        .nav-bar a {
+          text-decoration:none; 
+          color:white; 
+        }
+
+        .content-container {
+            background: #FFFFFF;
+            border-radius: 30px 30px 0 0;
+            min-height: calc(100vh - 80px);
+            padding: 2rem;
+        }
+
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #1B2430;
+        }
+
+        .location-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .rating-section {
+            margin: 2rem 0;
+        }
+
+        .rating-title {
+            color: #1B2430;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-start;
+        }
+
+        .star {
+            font-size: 2rem;
+            color: #1B2430;
+            cursor: pointer;
+        }
+
+        .map-section {
+            margin: 2rem 0;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 200px;
+            background: #f0f0f0;
+            border-radius: 16px;
+        }
+
+        .location-info {
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+        }
+
+        .comment-section {
+            margin: 2rem 0;
+        }
+
+        .comment-title {
+            color: #1B2430;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            resize: none;
+        }
+
+        .photo-section {
+            margin: 2rem 0;
+        }
+
+        .photo-title {
+            color: #1B2430;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .anonymous-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #FF6B6B;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .content-container {
+                padding: 1.5rem;
+            }
+            
+            .star {
+                font-size: 1.75rem;
+            }
+
+            .submit-btn {
+            background-color: #2D4356; 
+            color: white; 
+            padding: 0.75rem 1.5rem; 
+            border-radius: 25px; 
+            border: none; 
+            cursor: pointer; 
+            margin-top: 1rem; 
+        }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="images/PRIMARY LOGO.png" alt="Logo" class="logo" onclick="window.location.href='home.html'">
+        <div class="nav-bar" id="navBar">
+            <a href="register.html">Register</a>
+            <a href="timer.html">Timer</a>
+            <a href="map.html">Map</a>
+            <a href="review.html">Review</a>
+          </div>
+    </nav>
+
+    <div class="content-container">
+        <h1 class="page-title">Review & Rate</h1>
+        
+        <div class="location-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#1B2430"/>
+            </svg>
+            <div>
+                <div style="color: #666;">Your location</div>
+                <div style="font-weight: 500;">Ramgadh, Mulund</div>
+            </div>
+        </div>
+
+        <div class="rating-section">
+            <h3 class="rating-title">What's Your Rate?</h3>
+            <div class="star-rating">
+                <span class="star">☆</span>
+                <span class="star">☆</span>
+                <span class="star">☆</span>
+                <span class="star">☆</span>
+                <span class="star">☆</span>
+            </div>
+        </div>
+
+        <div class="map-section">
+            <div class="map-container" id="map">
+                <img src="images/mapimage.png">
+            </div>
+            <div class="location-info">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#666">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                </svg>
+                <span>Ramgadh, Mulund</span>
+                <span style="margin-left: auto;">3 min walk</span>
+            </div>
+        </div>
+
+        <div class="comment-section">
+            <h3 class="comment-title">Your Comment</h3>
+            <textarea placeholder="Write your review here..."></textarea>
+        </div>
+
+        <div class="photo-section">
+            <h3 class="photo-title">Upload Photos</h3>
+            <input type="file" multiple accept="image/*">
+        </div>
+
+        
+        <button id ="submitBtn"  class ="submit-btn" onclick="window.location.href='home.html'">Submit Review</button>
+
+        <button class="anonymous-btn">
+            <span>Anonymous</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        const stars = document.querySelectorAll('.star');
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                stars.forEach((s, i) => {
+                    s.textContent = i <= index ? '★' : '☆';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
