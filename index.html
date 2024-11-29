@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saaf Safal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(180deg, #143044 0%, #101012 100%);
+            font-family: Arial, sans-serif; 
+            overflow: hidden; 
+        }
+
+        .container {
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            width: 100%; 
+            height: 100%; 
+        }
+
+        .animated-logo {
+            width: 500px; 
+            opacity: 0; 
+            animation: fadeInBounce 2s forwards; 
+        }
+
+        @keyframes fadeInBounce {
+            0% {
+                opacity: 0;
+                transform: translateY(0);
+            }
+            50% {
+                opacity: 1; 
+                transform: translateY(-15px); 
+            }
+            70% {
+                transform: translateY(-5px); 
+            }
+            100% {
+                transform: translateY(0); 
+            }
+        }
+
+        .nav-bar {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 20px;
+        }
+
+        .nav-bar a {
+            text-decoration: none; 
+            color: white; 
+            margin-left: 15px; 
+        }
+
+        .bottom-container {
+            background-color: white; 
+            border-radius: 30px 30px 0 0; 
+            width: 100%;
+            padding-top: 20px; 
+            padding-bottom: 20px; 
+            position: absolute; 
+            bottom: -100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            opacity: 0;
+            transition: bottom 0.5s ease, opacity 0.5s ease; 
+        }
+
+        .language-button {
+            background-color: #143044; 
+            color: white; 
+            border-radius: 10px; 
+            width: calc(80% - 20px);
+            max-width: 350px; 
+            padding: 15px; 
+            margin: 10px 0; 
+            text-align: center;
+            font-size: 18px; 
+            cursor: pointer; 
+        }
+
+        .language-button:hover {
+            background-color: #101012; 
+        }
+
+        @media (max-width: 600px) {
+            .language-button {
+                width: calc(90% - 20px); 
+                padding: 10px; 
+                font-size: 16px; 
+                margin-bottom: 8px; 
+            }
+        }
+
+        .logo {
+          position:absolute;
+          top :20px;
+          left :20px;
+          width :100px;
+          opacity :0;
+          transition :opacity .5s ease-in-out;
+        }
+        a{
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="animationContainer">
+        <img src="images/PRIMARY LOGO.png" alt="Washroom Logo" class="animated-logo"> 
+    </div>
+    <div class="body"><img src="images/PRIMARY LOGO.png" alt="Washroom Logo" class="logo" id="topLogo" img sizes="500px"></div>
+
+    <div class="nav-bar" id="navBar">
+      <a href="register.html">Register</a>
+      <a href="timer.html">Timer</a>
+      <a href="map.html">Map</a>
+      <a href="review.html">Review</a>
+    </div>
+
+    <div class="bottom-container" id="languageContainer">
+      <div class="language-button"><a href="register.html">English</a></div> 
+      <div class="language-button">हिन्दी</div>
+      <div class="language-button">தமிழ்</div>
+      <div class="language-button">മലയാളം</div>
+      <div class="language-button">తెలుగు</div>
+      <div class="language-button">বাংলা</div>
+      <div class="language-button">ગુજરાતી</div>
+      <div class="language-button"></div>
+      <div class="language-button">அ</div>
+    </div>
+
+    <script>
+        
+        document.querySelector('.animated-logo').addEventListener('animationend', function() {
+          
+          this.style.opacity = '0';
+
+          
+          setTimeout(() => {
+              document.getElementById('navBar').style.display = 'flex'; 
+              const languageContainer = document.getElementById('languageContainer');
+              languageContainer.style.bottom = '0'; 
+              languageContainer.style.opacity = '1'; 
+              document.getElementById('topLogo').style.opacity = '1'; 
+          }, 500); 
+        });
+    </script>
+</body>
+</html>
