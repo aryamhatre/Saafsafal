@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(180deg, #143044 0%, #101012 100%);
+        }
+
+       .logo {
+            height: 60px;
+            padding: auto;
+        }
+
+        .nav-bar {
+          position:absolute; 
+          top :20px;
+          right :70px; 
+          display:flex; 
+          gap :15px; 
+          color:white;
+        }
+
+        .nav-bar a {
+          text-decoration:none; 
+          color:white; 
+        }
+
+        .content-container {
+            background: #FFFFFF;
+            border-radius: 30px 30px 0 0;
+            min-height: calc(100vh - 80px);
+            padding: 2rem;
+        }
+
+        .reviews-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #1B2430;
+            margin-bottom: 1.5rem;
+        }
+
+        .location-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+
+        .review-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #EEEEEE;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #F0F0F0;
+        }
+
+        .location-title {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 1rem 0;
+            color: #1B2430;
+        }
+
+        .star-rating {
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+
+        .star {
+            color: #1B2430;
+            font-size: 1.2rem;
+        }
+
+        .star.empty {
+            color: #DDD;
+        }
+
+        .review-text {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+
+        .image-gallery {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .gallery-image {
+            width: 180px;
+            height: 120px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .more-images {
+            width: 180px;
+            height: 120px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+
+        .review-btn {
+            background: #2D4356;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-transform: lowercase;
+        }
+
+        .read-more {
+            text-align: center;
+            color: #666;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .image-gallery {
+                flex-wrap: wrap;
+            }
+            
+            .gallery-image, .more-images {
+                width: calc(50% - 0.5rem);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+        <img src="images/PRIMARY LOGO.png" alt="Logo" class="logo" onclick="window.location.href='home.html'">
+        <div class="nav-bar" id="navBar">
+            <a href="register.html">Register</a>
+            <a href="timer.html">Timer</a>
+            <a href="map.html">Map</a>
+            <a href="review.html">Review</a>
+          </div>
+    </div>
+    </nav>
+
+    <div class="content-container">
+        <h1 class="reviews-title">Reviews</h1>
+        
+        <div class="location-card">
+            <div class="location-info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#1B2430">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                </svg>
+                <div>
+                    <div style="color: #666; font-size: 0.9rem;">Your location</div>
+                    <div style="font-weight: 500;">Ramgadh, Mulund</div>
+                </div>
+            </div>
+            <button class="review-btn" onclick="document.location= 'index.html'>review ;</button>           <a href="index.html"></a>
+
+        </div>
+
+       
+        <div class="review-card">  
+            <div class="user-info" href="review-2.html">>  
+                <div class="user-avatar"></div>
+                <div>
+                    <div style="font-weight: 500;">User#1010</div>
+                    <div style="color: #666; font-size: 0.85rem;">26 minutes ago</div>
+                    <a href="review-2.html"></a>
+                </div>
+            </div>
+            
+            <h3 class="location-title">Chhatrapati Shivaji Maharaj Terminus, Fort
+                <a href="review-2.html"></a>
+            </h3>
+            <div class="star-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star empty">★</span>
+                <span class="star empty">★</span>
+            </div>
+            <p class ="review-text">"Excellent, Clean and neat!"</p> <a href="index"></a>
+            
+            <div class="image-gallery">
+                <img src="images/image 7.png"Review class="gallery-image">
+                <div class="more-images">
+                    <div>6</div>
+                    <div>more</div>
+                </div>
+            </div>
+            <div class="read-more" onclick="window.location.href='review-2.html'">Read more
+                
+            </div>
+        </div>
+
+       
+        <div class="review-card">
+            <div class="user-info">
+                <div class="user-avatar"></div>
+                <div>
+                    <div style="font-weight: 500;">User#1010</div>
+                    <div style="color: #666; font-size: 0.85rem;">20 minutes ago</div>
+                </div>
+            </div>
+            
+            <h3 class="location-title">Marine Drive, Netaji Subhash Chandra Bose Road</h3>
+            <div class="star-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star empty">★</span>
+            </div>
+            <p class="review-text">"Good maintenance, no smell!"</p>
+            <div class="read-more">Read more</div>
+
+        </div>
+    </div>
+
+    <script>
+        function goToReviewPage(read-more) {
+            window.location.href = "review-2.html" ;
+        }
+
+        <a href="index"></a>
+    </script>
+</body>
+</html>

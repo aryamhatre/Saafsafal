@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=2622, initial-scale=1.0"> 
+    <title>Saaf Safal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(180deg, #143044 0%, #101012 100%);
+            font-family: Arial, sans-serif; 
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            width: 90%; 
+            max-width: 600px; 
+            background-color: white; 
+            border-radius: 30px; 
+            padding: 20px; 
+            position: relative; 
+        }
+
+        h2 {
+            text-align: center; 
+            margin-bottom: 20px; 
+        }
+
+        .gender-option {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%; 
+            max-width: 300px; 
+            height: 80px;
+            margin-bottom: 15px; 
+            border-radius: 10px; 
+            border: 2px solid #143044; 
+            cursor: pointer; 
+            transition: background-color 0.3s ease, border-color 0.3s ease; 
+        }
+
+        .gender-option:hover {
+            background-color: #e0e0e0; 
+        }
+
+        .gender-option.selected {
+            background-color: #143044; 
+            color: white; 
+        }
+
+        button {
+            background-color: #143044; 
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: calc(100% - 20px); 
+        }
+
+        button:hover {
+			background-color: #101012; 
+		}
+
+        .logo {
+          position:absolute;
+          top :20px;
+          left :20px;
+          width :100px;
+          opacity :1;
+          transition :opacity .5s ease-in-out;
+        }
+
+        .nav-bar {
+          position:absolute; 
+          top :20px;
+          right :70px; 
+          display:flex; 
+          gap :15px; 
+          color:white;
+        }
+
+        .nav-bar a {
+          text-decoration:none; 
+          color:white; 
+        }
+    </style>
+</head>
+<body>
+
+    <img src="images/PRIMARY LOGO.png"  alt="Washroom Logo" class="logo" id="topLogo" onclick="window.location.href='home.html'"> 
+
+    <div class="nav-bar" id="navBar">
+      <a href="register.html">Register</a>
+      <a href="timer.html">Timer</a>
+      <a href="map.html">Map</a>
+      <a href="review.html">Review</a>
+    </div>
+
+    <div class="container" id="registerContainer">
+        <h2>Select Your Gender</h2>
+ 
+        <div class="gender-option" onclick="selectGender('male', this)">
+          Male 
+        </div>
+        
+        <div class="gender-option" onclick="selectGender('female', this)">
+          Female <a href="trial3.html"></a>
+        </div>
+
+        <div class="gender-option" onclick="selectGender('neutral', this)">
+          Gender Neutral
+        </div>
+
+        <button type="button" onclick="continueToNext()">Continue<a href="trial3.html"></a></button>
+    </div>
+
+    <div class="container" id="washroomContainer" style="display:none;">
+        <h2>Which washroom would you like to use?</h2>
+
+        <div class="gender-option" onclick="selectWashroom('female', this)">
+          Female Washroom 
+        </div>
+        
+        <div class="gender-option" onclick="selectWashroom('male', this)">
+          Male Washroom <a href="trial3.html"></a>
+        </div>
+
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </div>
+
+    <script>
+      let selectedGender = '';
+
+      function selectGender(gender, element) {
+         
+          const options = document.querySelectorAll('.gender-option');
+          options.forEach(option => {
+              option.classList.remove('selected');
+              option.style.color = ''; 
+          });
+
+         
+          element.classList.add('selected');
+          selectedGender = gender;
+
+         
+          if (gender === 'neutral') {
+              selectedGender = 'neutral';
+              continueToNext();
+          }
+      }
+
+      function continueToNext() {
+          if (selectedGender === 'neutral') {
+              document.getElementById('washroomContainer').style.display = 'flex'; 
+              document.getElementById('registerContainer').style.display = 'none';
+          } else if (selectedGender) {
+              alert("Selected Gender is " + selectedGender);
+              window.location.href = "occupancy.html";
+              
+          } else {
+              alert("Please select a gender before continuing.");
+          }
+      }
+
+      function selectWashroom(washroom, element) {
+          const washroomOptions = document.querySelectorAll('#washroomContainer .gender-option');
+          washroomOptions.forEach(option => option.classList.remove('selected')); 
+
+          element.classList.add('selected'); 
+
+          alert("Selected Washroom is " + washroom); 
+          window.location.href = "fulloccupancy.html";
+      }
+
+      function submitForm() {
+          alert("Proceed to occupany selection");
+      }
+    </script>
+
+</body>
+</html>

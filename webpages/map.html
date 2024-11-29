@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Washrooms Map - Mulund</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background: linear-gradient(180deg, #143044 0%, #101012 100%); 
+            font-family: Arial, sans-serif; 
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            width: 100px; 
+        }
+
+
+    
+         .nav-bar {
+          position:absolute; 
+          top :20px;
+          right :70px; 
+          display:flex; 
+          gap :15px; 
+          color:white;
+        }
+
+        .nav-bar a {
+          text-decoration:none; 
+          color:white; 
+        }
+        .map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; 
+            flex-grow: 1; 
+        }
+
+        .curved-rectangle {
+            background-color: white; 
+            border-radius: 30px;
+            padding: 20px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+            position: relative; 
+            width: 100%; 
+            height: 97%; 
+        }
+
+        .map {
+            width: 100%; 
+            border-radius: 20px; 
+        }
+
+        .location {
+            position: absolute;
+            cursor: pointer; 
+        }
+
+        
+
+        .location-1 { top: 40%; left: 30%; width: 100px;height: 50px;}
+        .location-2 { top: 50%; left: 60%; }
+        .location-3 { top: 70%; left: 40%; }
+        .location-4 { top: 20%; left: 80%; }
+
+        .info-popup {
+            position: absolute;
+            bottom: -100px; 
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white; 
+            border-radius: 10px; 
+            padding: 10px; 
+            opacity: 0;
+            transition: opacity 0.3s ease, bottom 0.3s ease; /
+        }
+
+        .location:hover .info-popup {
+            opacity: 1; 
+            bottom: 100px; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="images/PRIMARY LOGO.png" alt="Logo" class="logo" onclick="window.location.href='home.html'"> 
+        
+        <div class="nav-bar" id="navBar">
+            <a href="register.html">Register</a>
+            <a href="timer.html">Timer</a>
+            <a href="map.html">Map</a>
+            <a href="review.html">Review</a>
+          </div>
+    </div>
+
+    <div class="map-container">
+      <div class="curved-rectangle">
+          <img src="images/map2.png" alt="Map of Mulund" class="map"> 
+
+          <!-- Location Pins -->
+          <div class="location location-1">
+              <img src="images/Vector.png" alt="Location Pin"> 
+              <div class="info-popup">
+                  <strong>SBM Toilet</strong><br>
+                  <b>Address :</b> Devidayal Rd, Gavane Pada, Mulund West<br>
+                  <b>Time to reach</b>: 5 minutes walk<br>
+                  <b>Waiting time:</b>Waiting time: 2 minutes<br>
+                  <b>People in line:</b> 3
+              </div>
+          </div>
+
+          <div class="location location-2">
+              <img src="images/Vector.png" alt="Location Pin"> 
+              <div class="info-popup">
+                  <strong>SBM Toilet</strong><br>
+                  Address: Garoaden View, Dr Ambedkar Road<br>
+                  Time to reach: 3 minutes walk<br>
+                  Waiting time: 7 minutes<br>
+                  People in line: 5
+              </div>
+          </div>
+
+          <div class="location location-3">
+              <img src="images/Vector.png" alt="Location Pin"> 
+              <div class="info-popup">
+                  <strong>SBM Toilet</strong><br>
+                  Address:Junction Road, Indira Nagar<br>
+                  Time to reach :2 minutes walk<br>
+                  Waiting time :10 minutes<br>
+                  People in line :8
+              </div>
+          </div>
+
+          <div class="location location-4">
+              <img src="images/Vector.png" alt="Location Pin"> 
+              <div class="info-popup">
+                  <strong>SBM Toilet</strong><br>
+                  Address:Nirmal Lifestyle, Lal Bahadur Shastri Marg<br>
+                  Time to reach :7 minutes walk<br>
+                  Waiting time :1 minute<br>
+                  People in line :2
+              </div>
+          </div>
+
+      </div> 
+    </div>
+
+</body>
+</html>
+
+
+
+
