@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Sanitation Practices</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(180deg, #143044 0%, #101012 100%);
+            color: #333;
+        }
+        .logo {
+            height: 50px;
+            width: 50px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;;
+            max-width: 80%;
+            max-height: 100%;
+            margin: 2rem auto;
+            margin-top: 70px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+       
+
+        .nav-bar {
+            position:absolute; 
+            top :20px;
+            right :70px; 
+            display:flex; 
+            gap :15px; 
+            color:white;
+
+        }
+
+        .nav-bar a {
+          text-decoration:none; 
+          color:white; 
+          font-weight: 500;
+        }
+
+        .banner-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .banner {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .banner:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .banner img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        h2 {
+            margin-top: 1rem;
+        }
+        .logo img {
+          margin: auto;
+            width: 100px; 
+            height;: 100px
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="images/PRIMARY LOGO.png" alt="Logo" onclick="window.location.href='index.html'"> 
+    </div>
+    <div class="nav-bar" id="navBar">
+        <a href="register.html">Register</a>
+        <a href="timer.html">Timer</a>
+        <a href="map.html">Map</a>
+        <a href="review.html">Review</a>
+        <a href="safety.html">Safety</a>
+      </div>
+
+    <div class="container">
+    
+        <h1>Safe Sanitation Practices</h1>
+        <div class="banner-container">
+            <div class="banner" onclick="location.href='page1.html'">
+                <img src="images/banner1.jpg" alt="Hand Washing">
+                <h2>Hand Washing</h2>
+                <p>Learn the importance of hand washing.</p>
+            </div>
+            <div class="banner" onclick="location.href='page2.html'">
+                <img src="images/banner2.jpg" alt="Safe Drinking Water">
+                <h2>Safe Drinking Water</h2>
+                <p>Understand how to ensure your drinking water is safe.</p>
+            </div>
+            <div class="banner" onclick="location.href='page3.html'">
+                <img src="images/banner3.jpg" alt="Waste Disposal">
+                <h2>Waste Disposal</h2>
+                <p>Discover proper waste disposal methods.</p>
+            </div>
+            <div class="banner" onclick="location.href='page4.html'">
+                <img src="images/banner4.jpg" alt="Food Safety">
+                <h2>Food Safety</h2>
+                <p>Learn about safe food handling practices.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
