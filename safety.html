@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help App</title>
+    <style>
+        body {
+            background: linear-gradient(180deg, #143044 0%, #101012 100%);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            text-align: center;
+            padding: 60px;
+        }
+
+
+        .container, #timerPage, #callPage {
+            display: none; /* Hide all pages initially */
+        }
+
+        .container.active {
+            display: block; /* Show active page */
+        }
+        .header {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            width: 100%; 
+            padding: 10px 20px; 
+            position: absolute; 
+            top: 0; 
+        }
+
+        .logo img {
+            padding: 10px;
+            width: 100px; 
+        }
+
+        .nav-bar {
+          position:absolute; 
+          top :20px;
+          right :70px; 
+          display:flex; 
+          gap :15px; 
+          color:white;
+        }
+
+        .nav-bar a {
+          text-decoration:none; 
+          color:white; 
+        }
+        .sync-logo {
+            width: 100px;
+            height: 100px;
+            background-color: #ff0000;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            transition: transform 0.5s ease;
+            display: inline-block; /* Center the logo */
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            height: 100%;
+            max-width: 90%;
+            max-height: 100%;
+            background-color: white;
+            border-radius: 20px;
+            padding: 20px;
+            position: relative;
+            margin-top: 100px; 
+        }
+        .sync-logo.rotate {
+            animation: rotate 1s infinite linear;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+h1{text-align: left;
+    width: 100%;
+text-decoration: gray;}
+        h2 {
+            margin-top: 20px;
+        }
+
+        h4 {
+            margin-top: 10px;
+        }
+
+        h6 {
+            margin-top: 5px;
+        }
+
+        .alert-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px; /* Space between buttons */
+        }
+
+        .call-buttons {
+            display: block; /* Stack buttons vertically */
+            color: linear-gradient(180deg, #143044 0%, #101012 100%)
+            font color(srgb rgb(255, 255, 255) rgb(255, 255, 255) rgb(255, 255, 255));
+        }
+
+        #otherInputContainer {
+            display: none; /* Hidden by default */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="images/PRIMARY LOGO.png" alt="Logo" onclick="window.location.href='index.html'"> 
+        </div>
+        <div class="nav-bar" id="navBar">
+            <a href="register.html">Register</a>
+            <a href="timer.html">Timer</a>
+            <a href="map.html">Map</a>
+            <a href="review.html">Review</a>
+            <a href="safety.html">Safety</a>
+          </div>
+    </div>
+    <div class="container active">
+        <h1>HELP NEEDED?</h1>
+        <p>SYNC YOUR CURRENT LOCATION.</p>
+        <p>This will help us assist you better.</p>
+
+        <div class="sync-logo" id="syncLogo" onclick="sync()"></div>
+        <p id="syncMessage"></p>
+
+        <h2><button onclick="sendAlert()">Send an Alert</button></h2>
+        
+        <h4><button onclick="makeCall()">Call</button></h4>
+        
+        <h4><button onclick="openCamera()">Camera</button></h4>
+
+        <div class="alert-buttons">
+            <h6><button onclick="alertMessage('Authorities Have been informed.')">I’m being followed</button></h6>
+            <h6><button onclick="alertMessage('Authorities Have been informed.')">I’m injured</button></h6>
+            <h6><button onclick="alertMessage('Authorities Have been informed.')">Out of toilet paper</button></h6>
+            <h6><button onclick="alertMessage('Authorities Have been informed.')">Need a sanitary pad</button></h6>
+            <h6><button onclick="alertMessage('Authorities Have been informed.')">The washroom isn’t well lit</button></h6>
+            <h6><button onclick="showOtherInput()">Others</button></h6>
+        </div>
+
+        <div id="otherInputContainer">
+            <input type="text" id="otherInput" placeholder="Please specify...">
+            <button id="submitOther" onclick="submitOther()">Submit</button>
+        </div>
+    </div>
+
+    <!-- Timer Page -->
+    <div id="timerPage">
+        <h1>Timer</h1>
+        <p id="timer">8 seconds remaining...</p>
+        <button onclick="falseAlarm()">Click here if it was a false alarm</button>
+    </div>
+
+    <!-- Call Page -->
+    <div id="callPage">
+        <h1>Emergency Contacts</h1>
+        <div class="call-buttons">
+            <button onclick="ringSound(); alert('Calling Emergency Contact')">Emergency Contact</button>
+            <button onclick="ringSound(); alert('Calling Police')">Police</button>
+            <button onclick="ringSound(); alert('Calling Hospital')">Hospital</button>
+            <button onclick="ringSound(); alert('Calling Women Helpline')">Women Helpline</button>
+        </div>
+    </div>
+
+    <!-- Audio element for ring sound -->
+    <audio id="ringSound" src="" preload="auto"></audio>
+
+    <script>
+        function sync() {
+            const logo = document.getElementById('syncLogo');
+            const message = document.getElementById('syncMessage');
+            
+            logo.classList.add('rotate');
+            message.textContent = "All synced up!";
+            
+            setTimeout(() => {
+                logo.classList.remove('rotate');
+                message.textContent = "";
+                // Here you can add code to actually sync the location
+                console.log("Location synced."); // Placeholder for location syncing
+            }, 10000);
+        }
+
+        function sendAlert() {
+            document.querySelector('.container').classList.remove('active');
+            document.getElementById('timerPage').style.display = 'block'; // Show timer page
+            startTimer();
+        }
+
+        function makeCall() {
+            document.querySelector('.container').classList.remove('active');
+            document.getElementById('callPage').style.display = 'block'; // Show call page
+        }
+
+        function openCamera() {
+           alert("Opening camera..."); // Placeholder for actual camera functionality
+       }
+
+       function alertMessage(message) {
+           alert(Alert: ${message}); // Handle alert messages
+       }
+
+       function showOtherInput() {
+           document.getElementById('otherInputContainer').style.display = 'block';
+       }
+
+       function submitOther() {
+           const otherMessage = document.getElementById('otherInput').value;
+
+           if (otherMessage) {
+               alert(Authorities have been informed about: ${otherMessage});
+               document.getElementById('otherInput').value = ''; // Clear input
+               document.getElementById('otherInputContainer').style.display = 'none'; // Hide input field
+               return;
+           }
+           
+           alert("Please enter a message."); // Prompt if input is empty
+       }
+
+       function startTimer() {
+           let timeLeft = 8;
+           const timerElement = document.getElementById('timer');
+
+           const countdown = setInterval(() => {
+               timeLeft--;
+               timerElement.textContent = ${timeLeft} seconds remaining...;
+
+               if (timeLeft <= 0) {
+                   clearInterval(countdown);
+                   alert("Time's up!");
+                   resetToMainPage(); // Redirect back to the main page
+               }
+           }, 1000);
+       }
+
+       function falseAlarm() {
+           alert("False alarm reported."); // Handle false alarm
+           resetToMainPage(); // Redirect back to the main page
+       }
+
+       function resetToMainPage() {
+           document.querySelector('.container').classList.add('active');
+           document.getElementById('timerPage').style.display = 'none';
+           document.getElementById('callPage').style.display = 'none';
+       }
+
+       function ringSound() {
+           const audio = document.getElementById("ringSound");
+           audio.src = "data:audio/wav;base64,UklGRiAAAABXQVZFZm10IBAAAAABAAEAAQAAACABAAEAAQAAAAAAAAAABAAEAAAABAAAAAA=="; // Base64 encoded silent audio for demonstration
+           audio.play();
+           setTimeout(() => { audio.pause(); audio.currentTime = 0; }, 10000); // Stop after 10 seconds
+       }
+   </script>
+</body>
+</html>
